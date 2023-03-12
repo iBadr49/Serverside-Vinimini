@@ -2,6 +2,8 @@ import express from 'express'
 
 const url = 'https://api.vinimini.fdnd.nl'
 
+// https://api.vinimini.fdnd.nl 
+// /api/v1/producten
 // Maak een nieuwe express app
 const app = express()
 
@@ -10,11 +12,18 @@ app.set('view engine', 'ejs')
 app.set('views', './views')
 app.use(express.static('public'))
 
-// Maak een route voor de index
+// Routes/path gemaakt voor mijn index | proces | agenda pagina's 
 app.get('/', (request, response) => {
-  fetchJson(url).then((data) => {
+  fetchJson(url + '/api/v1/producten').then((data) => {
+    // console.log(data)
     response.render('index', data)
-    console.log(data)
+  })
+})
+
+app.get('/producten', (request, response) => {
+  fetchJson(url + '/api/v1/producten').then((data) => {
+    response.render('producten', data)
+    // console.log(data)
   })
 })
 
@@ -22,7 +31,7 @@ app.get('/proces', (request, response) => {
     response.render('proces')
   })
   
-  app.get('/agenda', (request, response) => {
+app.get('/agenda', (request, response) => {
     response.render('agenda')
   })
 

@@ -8,15 +8,50 @@
 --black: black;
 }
 
+/*---- MediaQuery -- RESPONSIVE!! ---- */
+
+@media only screen and (max-width: 1024px) {
+  header nav{
+    display: none;
+  }
+  nav ul {
+    display: flex;
+    margin:  0;
+    padding: 0;
+    width: 30px;
+  }
+  header nav ul li{
+    margin-left: 0;
+  }
+
+  div.box4{
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  body{
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+   .advies{
+     justify-items: center;
+     justify-content: center;
+    }
+  }
+
 body{
     margin: 0;
     padding: 0;
-    font-family: var(--font)
+    font-family: var(--font);
+    background-color: #fafafa;
   }
   
-   /*--------------------INDEX-PAGINA----------------------- */
-
-   /*---- Die terug BUTTON ----*/
+   /*- - index.ejs - -*/
+   /*- - Mini-profiel "Button" - -*/
 .homepage{
   margin-left: 2rem;
   margin-top: 1.5rem;
@@ -37,12 +72,12 @@ a:hover{
   color: var(--lightGroen);
 }
 
-/*---- Deze is voor Proces en Agenda pages ----*/
+/*---- Proces en Agenda pages ----*/
 
 .homepage2{
   margin-left: 2rem;
   margin-top: 1.5rem;
-  color: black;
+  color: var(--black);
   font-size: 14px;
 }
 
@@ -59,15 +94,12 @@ a:hover{
   color: var(--lightGroen);
 }
 
-/* Navbar */
+/* -- Navbar -- */
 
 header {
   background-color: var(--white);
   padding: 10px;
   font-family: var(--font);
-  /* opacity: 0.5; */
-  /* position: sticky;
-  top: 0; */
   display: flex;
   flex-direction: row;
   }
@@ -89,24 +121,18 @@ header {
     align-items: center;
   }
 
-  /*------------ homepage-background ---------------*/
 
-/*
- .main-background {
-  background-image: url("/assets/hero-image.jpg.webp");
-  height: 100vh;
-  /*margin-top: -161px;*/
-  
-
-/*body > .main-background {
-  filter: brightness(70%);
-}*/
-
-.Mini{
+.mini{
   color: var(--lightGroen);
+  list-style: none;
+  
 }
 
-/*----------------- BUTTONS Style -----------------*/
+a, .mini{
+  text-decoration: none;
+  color: inherit;
+}
+/*----- BUTTONS Style -----*/
 
 .middle{
     position: absolute;
@@ -157,7 +183,7 @@ header {
 .main-background, .middle > .btn::before{
   content: "";
   position: absolute;
-  background-color: var(--white);
+  background-color: #fafafa;
   left: 0;
   top: 0;
   width: 100%;
@@ -197,10 +223,12 @@ header {
   ". .";
 }
   
-/*---- LOGBOEK PAGINA ----*/
+/*---- logboek page ----*/
 
 .h1h2{
   margin: 1rem;
+  text-align: center;
+  color: var(--lightGroen);
 }
 
 .flex {
@@ -265,7 +293,7 @@ header {
 }
 
 .input1{
-  height: 20vh;
+  height: auto;
   transition: ease 0.5s;
 }
 
@@ -281,7 +309,7 @@ header {
   margin: 14px;
 }
 
-/* Dit is voor JS */
+/* --- Dit is voor JS code --- */
 .inputOn{
   height: 50vh;
 }
@@ -289,18 +317,9 @@ header {
 .test{
   display: none;
 }
-/* END JS classes */
+/* --- END JS ---- */
 
-/** 
-.box5 h1{
-  font-size: 20px;
-}
-
-.box5 p{
-  margin-left: 10px;
-} 
-**/
- 
+ /* --- Reminder ---- */
 .reminder h3 {
   margin-left: 30%;
   font-size: 20px;
@@ -330,86 +349,17 @@ header {
   font-size: 13px;
 }
 
-/*
-.box4 h3{
-  text-align: center;
-  font-size: 20px;
-  color: black;
-  padding: 15px;
-  background-color: white;
-  margin: 0;
-}
 
-.box4 {
-  display: flex;
-  margin-bottom: 1rem;
-  flex-direction: column;
-  box-shadow: 2px 2px 20px #72afa6;
-  background-color: white;
-  position: fixed;
-  bottom: 0;
-  right: clamp(2rem, 8vw, 10rem);
-}
-
-.box4 .body{
-  flex: 1;
-  color: rgb(255, 255, 255);
-  background-color: rgb(0,0,0,0,7);
-  padding: 15px;
-}
-
-.box4 .message {
-  background-color: beige;
-  color: black;
-  width: fit-content;
-  margin-bottom: 15px;
-}
-
-.box4 .user_message {
-  margin-left: auto;
-  background-color: #72afa6;
-}
-
-.box4 .footer form{
-  display: flex;
-}
-
-form input{
-  flex: 1;
-  height: 40px;
-  border: none;
-  outline: none;
-  padding-left: 5px;
-  font-size: 16px;
-  background-color: beige;
-}
-
-form button{
-  width: 20%;
-  border: none;
-  outline: none;
-  background-color: #72afa6;
-  color: black;
-  cursor: pointer;
-} 
-form button:hover {
-  color: white;
-  transition: 0.2s ease;
-}
-
-*/
-
-h1{
-  text-align: center;
+.logboek h1 {
   color: var(--lightGroen);
-}
-
-h2{
   text-align: center;
-}   
+}
+.logboek h2{
+  text-align: center;
+} 
 
 
-/*------------------------- AGENDA PAGINA ----------------------*/
+/*---- Agenda Pagina ----*/
 /* declare a 7 column grid on the table */
 #calendar {
   margin-left: 10%;  
@@ -541,8 +491,8 @@ caption {
   color: var(--lightGroen);
 }
 
-/*------------- PROCES-PAGINA -------------------*/
-/* ------------------ CHATBOX ----------------- /
+/*---- Proces page ----*/
+/* --- CHATBOX --- /
 /* Button used to open the chat form - fixed at the bottom of the page */
 .open-button {
   background-color: var(--lightGroen);
@@ -599,7 +549,7 @@ caption {
 /* Set a style for the submit/send button */
 .form-container .btn {
   background-color: #04AA6D;
-  color: white;
+  color: var(--white);
   padding: 16px 20px;
   border: none;
   cursor: pointer;
@@ -618,43 +568,14 @@ caption {
   opacity: 1;
 }
 
+/* --- Product pagina --- */
 
-/*---- RESPONSIVE!! ---- */
-
-@media only screen and (max-width: 1024px) {
-  header nav{
-    display: none;
-  }
-  nav ul {
-    display: flex;
-    margin:  0;
-    padding: 0;
-    width: 30px;
-  }
-
-  header nav ul li{
-    margin-left: 0;
-  }
-
-  footer.social{
-    display: none;
-    
-  }
-  div.box4{
-    display: none;
-  }
+.article, h3{
+  color: var(--lightGroen);
 }
 
-@media only screen and (max-width: 700px) {
-  body{
-    margin: 0;
-    padding: 0;
-  }
+.productImage{
+  width: 40%;
+  height: auto;
 }
 
-@media only screen and (max-width: 500px) {
-   .advies{
-     justify-items: center;
-     justify-content: center;
-    }
-  }

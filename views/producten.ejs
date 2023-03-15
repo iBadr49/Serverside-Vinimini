@@ -1,18 +1,26 @@
 <%- include('./partials/head.ejs') %>
 
-<div class="homepage">
-    <a href="/" class="homepagina"> Startpagina </a> | Producten
+<div class="homePage">
+  <a href="/" class="homePageButton"> Startpagina </a> | Producten
 </div>
 
 <H1 class="h1h2">Producten</H1>
 
-<article class="logboek">
-    <!-- For Each loop -->
+<!-- For Each loop "Producten" -->
+<section class="productContainer">
   <% producten.forEach(product=> { %>
-  <h3><%= product.categorie.titel %></h3>
-  <a> <img src="assets/productImage.jpg" alt="productImage" class="productImage"/></a>
-  <h4><%= product.titel %></h4>
-  $ <%= product.prijs %> <% }) %>
-</article>
+  <article>
+    <h2><%= product.categorie.titel %></h2>
+    <a>
+      <img
+        src="assets/productImage.jpg"
+        alt="productImage"
+        class="productImage"
+    /></a>
+    <p><%= product.titel %></p>
+    $ <%= product.prijs %>
+  </article>
+  <% }) %>
+</section>
 
 <%- include('./partials/foot.ejs') %>

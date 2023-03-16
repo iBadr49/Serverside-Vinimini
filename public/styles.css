@@ -11,12 +11,12 @@
 
 /*---- MediaQuery -- RESPONSIVE!! ---- */
 
-@media all and (min-width: 1024px) {
+ @media all and (min-width: 1024px) {
   .menuBurger {
     display: none;
   }
-  header {
-    justify-content: center;
+  header, nav{
+    justify-content: center !important;
   }
 } 
 
@@ -26,59 +26,27 @@
   }
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (max-width: 700px) {
   body {
     margin: 0;
     padding: 0;
   }
   .productContainer{
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
+    text-align: center;
   }
 }
 
 @media only screen and (max-width: 500px) {
   .advies {
     justify-items: center;
-    justify-content: center;
   }
   .productContainer{
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr) !important;
+    text-align: center;
   }
-}
-
-/* ============================
-				Mobile Responsiveness Calendar
-   ============================*/
-
-   @media (max-width: 768px) {
-    #calendar .weekdays,
-    #calendar .other-month {
-      display: none;
-    }
-  
-    #calendar li {
-      height: auto;
-      border: 1px solid #ededed;
-      width: 100%;
-      padding: 10px;
-      margin-bottom: -1px;
-    }
-  
-    #calendar,
-    #calendar tr,
-    #calendar tbody {
-      grid-template-columns: 1fr;
-    }
-  
-    #calendar tr {
-      grid-column: 1 / 2;
-    }
-  
-    #calendar .date {
-      align-self: flex-start;
-    }
-  }
+} 
 
 /* -- Body -- */
 
@@ -121,7 +89,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
+} 
 
 header ul {
   display: flex;
@@ -132,9 +100,6 @@ header ul {
 header ul li {
   margin-left: 50px;
   font-size: 15px;
-}
-
-nav {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -225,10 +190,13 @@ a,
 
 /*-------------- ProcesPage ------------------*/
 
-.h1h2{
+.pageTitel {
   margin: 1rem;
   text-align: center;
   color: var(--lightGreen);
+}
+.subTitel{
+  text-align: center;
 }
 
 .flex {
@@ -268,35 +236,8 @@ a,
   width: 4vw;
 }
 
-.container {
-  width: 23vw;
-}
+/* ----------------------- */
 
-.logboek {
-  margin: 0 auto;
-  width: 80%;
-  margin-bottom: 150px;
-}
-
-.logboek,
-.inputForm {
-  justify-content: left;
-}
-
-.input1 {
-  height: auto;
-  transition: ease 0.5s;
-}
-
-/* --- Dit is voor JS code --- */
-.inputOn {
-  height: 50vh;
-}
-
-.test {
-  display: none;
-}
-/* --- END JS ---- */
 
 
 /* --------- Reminder --------- */
@@ -329,7 +270,7 @@ a,
   font-size: 13px;
 }
 
-/*---- Proces page ----*/
+
 /* --- CHATBOX --- /
 /* Button used to open the chat form - fixed at the bottom of the page */
 .open-button {
@@ -432,10 +373,9 @@ a,
   text-align: center;
 }
 
-/*---- Agenda Calendar ----*/
 /* declare a 7 column grid on the table */
 #calendar {
-  margin-left: 10%;
+  margin-left: 10%;  
   margin-bottom: 10%;
   width: 80%;
   /*margin:0 auto;*/
@@ -443,8 +383,7 @@ a,
   grid-template-columns: repeat(7, 1fr);
 }
 
-#calendar tr,
-#calendar tbody {
+#calendar tr, #calendar tbody {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -460,28 +399,27 @@ caption {
 }
 
 #calendar a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
-#calendar td,
-#calendar th {
-  padding: 4px;
-  box-sizing: border-box;
-  border: 4px solid #ccc;
+#calendar td, #calendar th {
+	padding: 4px;
+	box-sizing:border-box;
+	border: 4px solid #ccc;
 }
 
 #calendar .weekdays {
-  background: var(--lightGreen);
+	background: var(--lightGroen);  
 }
 
 #calendar .weekdays th {
-  text-align: center;
-  text-transform: uppercase;
-  line-height: 20px;
-  border: none;
-  padding: 10px 6px;
-  color: #fff;
-  font-size: 13px;
+	text-align: center;
+	text-transform: uppercase;
+	line-height: 20px;
+	border: none;
+	padding: 10px 6px;
+	color: #fff;
+	font-size: 13px;
 }
 
 #calendar td {
@@ -491,68 +429,126 @@ caption {
 }
 
 #calendar .days li:hover {
-  background: #d3d3d3;
+	background: #d3d3d3;
 }
 
 #calendar .date {
-  text-align: center;
-  margin-bottom: 5px;
-  padding: 4px;
-  background: #72afa6;
-  color: #fff;
-  width: 20px;
-  border-radius: 50%;
-  flex: 0 0 auto;
-  align-self: flex-end;
+	text-align: center;
+	margin-bottom: 5px;
+	padding: 4px;
+	background: #72afa6;
+	color: #fff;
+	width: 20px;
+	border-radius: 50%;
+    flex: 0 0 auto;
+    align-self: flex-end;
 }
 
 #calendar .event {
   flex: 0 0 auto;
-  font-size: 13px;
-  border-radius: 4px;
-  padding: 5px;
-  margin-bottom: 5px;
-  line-height: 14px;
-  background: #e4f2f2;
-  border: 1px solid #b5dbdc;
-  color: #009aaf;
-  text-decoration: none;
+	font-size: 13px;
+	border-radius: 4px;
+	padding: 5px;
+	margin-bottom: 5px;
+	line-height: 14px;
+	background: #e4f2f2;
+	border: 1px solid #b5dbdc;
+	color: #009aaf;
+	text-decoration: none;
 }
 
 #calendar .event-desc {
-  color: #666;
-  margin: 3px 0 7px 0;
-  text-decoration: none;
+	color: #666;
+	margin: 3px 0 7px 0;
+	text-decoration: none;	
 }
 
 #calendar .other-month {
-  background: #f5f5f5;
-  color: #666;
+	background: #f5f5f5;
+	color: #666;
+}
+
+/* ============================
+				Mobile Responsiveness  Agenda
+   ============================*/
+
+@media(max-width: 768px) {
+
+	#calendar .weekdays, #calendar .other-month {
+		display: none;
+	}
+
+	#calendar li {
+		height: auto;
+		border: 1px solid #ededed;
+		width: 100%;
+		padding: 10px;
+		margin-bottom: -1px;
+	}
+  
+  #calendar, #calendar tr, #calendar tbody {
+    grid-template-columns: 1fr;
+  }
+  
+  #calendar  tr {
+    grid-column: 1 / 2;
+  }
+
+	#calendar .date {
+		align-self: flex-start;
+	}
 }
 
 /* ------ Color ------- */
 .stukjeTextColor {
   color: var(--lightGreen);
 }
+.container {
+  width: 23vw;
+}
+
+.logboek {
+  margin: 0 auto;
+  width: 80%;
+  margin-bottom: 150px;
+}
+
+.logboek,
+.inputForm {
+  justify-content: left;
+}
+
+.input1 {
+  height: auto;
+  transition: ease 0.5s;
+}
+
+/* --- Dit is voor JS code --- */
+.inputOn {
+  height: 50vh;
+}
+
+.test {
+  display: none;
+}
+/* --- END JS ---- */
+
 
 /* --- Product pagina --- */
 
 .productContainer{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  text-align: center;
   border-radius: 10px;
   box-shadow: 2px 2px 20px var(--lightGreen);
   margin: 20px;
   padding: 20px;
 }
 
-.article,
-h3 {
-  color: var(--lightGreen);
-}
-
 .productImage {
   width: 40%;
   height: auto;
 }
+
 

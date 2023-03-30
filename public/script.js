@@ -1,3 +1,6 @@
+
+// ---- Logboek klik animatie !! ----
+
 const input1 = document.querySelector('.input1');
 const inputOn = document.querySelector('.inputOn');
  input1.addEventListener("click", inputClick);

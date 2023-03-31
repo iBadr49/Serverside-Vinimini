@@ -5,12 +5,11 @@
 
 
 
-## Inhoudsopgave
+## 📚 Inhoudsopgave
 
   * [Beschrijving](#beschrijving)
   * [Kenmerken](#kenmerken)
   * [Installatie](#installatie)
-  * [Gebruik](#gebruik)
   * [Bronnen](#bronnen)
   * [Licentie](#licentie)
 
@@ -23,17 +22,112 @@ Vinimini is een start up en is opgericht door twee moeders, Vinimini verkoopt pr
 
 ## Kenmerken
 Om dit producten pagina te kunnen bouwen heb ik gebruik gemaakt van ``` EJS ``` | ```Nodejs```| ```Express``` | ```REST API``` | ```Css``` .. zie hieronder:
-- Node.js is een omgeving waarmee ontwikkelaars snelle en schaalbare webtoepassingen kunnen bouwen met behulp van JavaScript, zorgt ook dat de code op serverside loopt inplaats van clientside.
+- **Node.js** is een omgeving waarmee ontwikkelaars snelle en schaalbare webtoepassingen kunnen bouwen met behulp van JavaScript, zorgt ook dat de code op serverside loopt inplaats van clientside.
 
-- Express is een framework voor node.js en maakt het eenvoudiger voor ontwikkelaars om webapplicaties te maken met Node.js.
+```js
+// Routes/path gemaakt voor mijn index | proces | agenda pagina's 
+app.get('/', (request, response) => {
+  fetchJson(url + '/api/v1/producten').then((data) => {
+    // console.log(data)
+    response.render('index', data)
+  })
+})
 
-- Ejs staat voor Embedded JavaScript en zorgt dat functies van Js in het html kunnen geschreven worden.
+app.get('/producten', (request, response) => {
+  fetchJson(url + '/api/v1/producten').then((data) => {
+    response.render('producten', data)
+    // console.log(data)
+  })
+})
+```
 
+- **Express** is een framework voor node.js en maakt het eenvoudiger voor ontwikkelaars om webapplicaties te maken met Node.js.
+
+```js
+import express from 'express'
+
+const url = 'https://api.vinimini.fdnd.nl'
+
+// Maak een nieuwe express app
+const app = express()
+
+// Stel in hoe we express gebruiken
+app.set('view engine', 'ejs')
+app.set('views', './views')
+app.use(express.static('public'))
+```
+
+- **Ejs** staat voor Embedded JavaScript en zorgt dat functies van Js in het html kunnen geschreven worden.
+
+```html
+<H1 class="pageTitel">Producten</H1>
+<!-- alles hieronder behalve de image komt uit de vinimini APi -->
+<!-- For Each loop "Producten" -->
+<section class="productContainer">
+  <% producten.forEach(product=> { %>
+  <article>
+    <!-- Product Categorie titel -->
+    <h2><%= product.categorie.titel %></h2>
+    <a>
+      <!-- For nu heb ik een image gebruikt voor alle producten later ga ik dat veranderen -->
+      <img
+        src="assets/productImage.jpg"
+        alt="productImage"
+        class="productImage"
+    /></a>
+    <!-- Product titel&prijs gehaald -->
+    <p><%= product.titel %></p>
+    $ <%= product.prijs %>
+  </article>
+  <% }) %>
+```
+
+- Mijn product pagina heb ik met een ``` grid ``` gemaakt en is ook responsive. **Zie** ``` Css ``` hieronder:
+
+```css
+/* --- Product pagina --- */
+
+.productContainer{
+  display: grid;
+  --columns: 1;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 2px 2px 20px var(--lightGreen);
+  margin: 20px;
+  padding: 20px;
+}
+
+/*---- MediaQuery -- RESPONSIVE!! ---- */
+@media all and (min-width: 500px) {
+  .productContainer{
+    --columns: 2;
+  }
+}
+@media all and (min-width: 700px) {
+  .productContainer{
+    --columns: 3;
+  }
+}
+@media all and (min-width: 1024px) {
+  .productContainer{
+    --columns: 4;
+  }
+}
+
+.productImage {
+  width: 40%;
+  height: auto;
+}
+```
 
 ## Installatie
 Ga eerst naar nodejs.org en installeer de Node ontwikkelomgeving. Voor dit project heb ik gebruik gemaakt van 18.14.0 LTS, download de benodigde bestanden en doorloop het installatieproces. Daarna open Visual Studio Code - terminal en installeer Node doormiddel van het commando npm innit, voer hierna npm install uit, om de pagina te open start je een server op door middel van npm start en als de server weer gesloten moet worden kan je control + c / ^c gebruiken op mac.
 
 ## Bronnen
+- Les stof | Workshops
+- Ju5tu5 voorbeeld | https://github.com/ju5tu5/server-side-rendering
+- Vinimini REST API | https://api.vinimini.fdnd.nl/docs/producten
 
 ## Licentie
 
